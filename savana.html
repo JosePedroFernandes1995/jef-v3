@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAVANA — Mozambique | JEF</title>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:#eee9df;
+  color:#151515;
+  font-family:Arial,sans-serif;
+}
+a{color:inherit;text-decoration:none}
+.serif{font-family:Georgia,serif}
+.eyebrow{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+
+nav{
+  position:absolute;
+  z-index:20;
+  width:100%;
+  padding:28px 4vw;
+  display:flex;
+  justify-content:space-between;
+  color:white;
+}
+.logo{font:700 30px Georgia}
+.navlinks{display:flex;gap:28px;font-size:11px;letter-spacing:.15em}
+
+.hero{
+  height:100vh;
+  min-height:720px;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  padding:5vw 4vw;
+  color:white;
+  background:
+    linear-gradient(0deg,rgba(0,0,0,.65),rgba(0,0,0,.05)),
+    url('https://jef.pt/cdn/shop/files/JEF_FW26_0045_1500x.jpg?v=1788943795')
+    center/cover;
+}
+.hero h1{
+  font:normal clamp(90px,18vw,260px)/.72 Georgia;
+  margin:15px 0;
+}
+.hero-bottom{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+}
+.hero-intro{
+  max-width:480px;
+  font:22px/1.4 Georgia;
+}
+
+.chapter{
+  padding:11vw 7vw;
+  display:grid;
+  grid-template-columns:.65fr 1.35fr;
+  gap:8vw;
+}
+.chapter h2{
+  font:normal clamp(55px,8vw,120px)/.9 Georgia;
+  margin:10px 0 40px;
+}
+.chapter-text{
+  max-width:700px;
+  font:22px/1.65 Georgia;
+}
+.chapter-text p:first-child{
+  font-size:30px;
+  line-height:1.45;
+}
+
+.landscape{
+  min-height:90vh;
+  background:
+    linear-gradient(0deg,rgba(0,0,0,.3),rgba(0,0,0,.05)),
+    url('https://jef.pt/cdn/shop/files/JEF_FW26_LB_0396_533x.jpg?v=1786725073')
+    center/cover;
+  display:flex;
+  align-items:flex-end;
+  padding:5vw;
+  color:white;
+}
+.landscape h2{
+  font:normal clamp(60px,10vw,150px)/.9 Georgia;
+  max-width:1000px;
+  margin:0;
+}
+
+.word{
+  background:#111;
+  color:#eee;
+  padding:12vw 8vw;
+}
+.word blockquote{
+  max-width:1200px;
+  margin:40px 0;
+  font:normal clamp(45px,7vw,100px)/1.05 Georgia;
+}
+.credit{
+  display:flex;
+  gap:30px;
+  align-items:center;
+  font-size:11px;
+  letter-spacing:.18em;
+}
+.credit:before{
+  content:'';
+  width:80px;
+  height:1px;
+  background:#777;
+}
+
+.story{
+  padding:12vw 7vw;
+}
+.story-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8vw;
+  align-items:start;
+}
+.story h2{
+  font:normal clamp(55px,8vw,120px)/.9 Georgia;
+  margin:10px 0 50px;
+}
+.story-copy{
+  font:21px/1.7 Georgia;
+}
+.story-number{
+  font:normal 120px/1 Georgia;
+  opacity:.12;
+}
+
+.sound{
+  background:#c9bea9;
+  padding:11vw 7vw;
+}
+.sound-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8vw;
+  align-items:center;
+}
+.sound h2{
+  font:normal clamp(60px,9vw,135px)/.85 Georgia;
+  margin:15px 0 35px;
+}
+.sound-copy{
+  max-width:580px;
+  font:20px/1.6 Georgia;
+}
+
+.player{
+  border-top:1px solid #111;
+  border-bottom:1px solid #111;
+  padding:35px 0;
+}
+.track{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:35px;
+}
+.play{
+  width:78px;
+  height:78px;
+  border:1px solid #111;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  font-size:20px;
+}
+.wave{
+  height:160px;
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.wave i{
+  display:block;
+  width:3px;
+  background:#111;
+  height:var(--h);
+}
+
+.symbols{
+  padding:11vw 4vw;
+  background:#f6f3ed;
+}
+.symbols-title{
+  padding:0 3vw 60px;
+}
+.symbols-title h2{
+  font:normal clamp(55px,7vw,100px) Georgia;
+  margin:10px 0;
+}
+.symbol-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+.symbol{
+  padding:40px 25px;
+  border-top:1px solid #aaa;
+  border-right:1px solid #aaa;
+  min-height:300px;
+}
+.symbol:last-child{border-right:0}
+.symbol span{
+  font:normal 60px Georgia;
+  opacity:.25;
+}
+.symbol h3{
+  font:normal 28px Georgia;
+  margin-top:70px;
+}
+.symbol p{
+  font-size:13px;
+  line-height:1.6;
+}
+
+.film{
+  min-height:85vh;
+  background:#151515;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:8vw;
+}
+.film h2{
+  font:normal clamp(70px,12vw,180px)/.85 Georgia;
+  margin:20px 0;
+}
+.film .play{
+  border-color:white;
+  margin:40px auto;
+}
+
+.pieces{
+  padding:10vw 4vw;
+  background:white;
+}
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:50px;
+}
+.section-head h2{
+  font:normal clamp(50px,7vw,100px) Georgia;
+  margin:10px 0 0;
+}
+.products{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+.product img{
+  width:100%;
+  aspect-ratio:.75;
+  object-fit:cover;
+}
+.product p{
+  font-size:12px;
+  letter-spacing:.05em;
+  line-height:1.6;
+}
+
+.next{
+  min-height:85vh;
+  background:#181818;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:8vw;
+}
+.next h2{
+  font:normal clamp(90px,16vw,230px)/.75 Georgia;
+  margin:20px 0;
+}
+.next a{
+  display:inline-block;
+  border-bottom:1px solid;
+  padding-bottom:6px;
+  font-size:11px;
+  letter-spacing:.2em;
+}
+
+footer{
+  background:#090909;
+  color:#999;
+  padding:60px 4vw;
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  letter-spacing:.12em;
+}
+
+@media(max-width:800px){
+  .navlinks{display:none}
+  .chapter,.story-grid,.sound-grid{grid-template-columns:1fr}
+  .hero-bottom{display:block}
+  .grid4{grid-template-columns:1fr 1fr}
+  .symbol-grid{grid-template-columns:1fr 1fr}
+  .products{grid-template-columns:1fr 1fr}
+  .chapter-text p:first-child{font-size:24px}
+  footer{flex-direction:column;gap:20px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html" class="logo">JEF</a>
+  <div class="navlinks">
+    <a href="index.html#collections">COLLECTIONS</a>
+    <a href="#story">STORY</a>
+    <a href="#word">THE WRITTEN WORD</a>
+    <a href="#sound">THE SOUND</a>
+    <a href="#pieces">PIECES</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-bottom">
+    <div>
+      <span class="eyebrow">CHAPTER I — MOZAMBIQUE</span>
+      <h1>SAVANA</h1>
+    </div>
+
+    <p class="hero-intro">
+      An encounter with the ancestral soul of Mozambique,
+      told through clothing, literature and sound.
+    </p>
+  </div>
+</header>
+
+<section class="chapter" id="story">
+
+  <div>
+    <span class="eyebrow">THE PLACE</span>
+    <h2>Moçam<br>bique.</h2>
+  </div>
+
+  <div class="chapter-text">
+    <p>
+      SAVANA begins with a landscape — vast, warm,
+      rhythmic and inseparable from the Indian Ocean.
+    </p>
+
+    <p>
+      Mozambique becomes more than a visual reference.
+      Its colours, artistic expressions, traditions and
+      cultural encounters become the language through
+      which the collection is constructed.
+    </p>
+
+    <p>
+      JEF approaches the country as a meeting point:
+      between nature and architecture, ancestral rhythm
+      and contemporary form, memory and movement.
+    </p>
+  </div>
+
+</section>
+
+<section class="landscape">
+  <div>
+    <span class="eyebrow">MOZAMBIQUE / INDIAN OCEAN</span>
+    <h2>
+      A landscape<br>
+      translated into form.
+    </h2>
+  </div>
+</section>
+
+<section class="word" id="word">
+
+  <span class="eyebrow">THE WRITTEN WORD</span>
+
+  <blockquote>
+    “Pulsa-me o coração ao ritmo dolente
+    desta luz e deste quebranto.”
+  </blockquote>
+
+  <div class="credit">
+    KNOPFLI · MOZAMBIQUE
+  </div>
+
+</section>
+
+<section class="story">
+
+  <div class="story-grid">
+
+    <div>
+      <span class="eyebrow">THE STORY</span>
+      <h2>
+        Rhythm.<br>
+        Texture.<br>
+        Memory.
+      </h2>
+
+      <div class="story-number">01</div>
+    </div>
+
+    <div class="story-copy">
+      <p>
+        The visual vocabulary of SAVANA moves through
+        some of Mozambique's most distinctive cultural
+        expressions.
+      </p>
+
+      <p>
+        The capulana introduces colour and pattern.
+        Mussiro evokes ritual, identity and materiality.
+        The landscape brings the tones and textures of
+        savanna, tropical vegetation and the Indian Ocean.
+      </p>
+
+      <p>
+        Artistic and architectural references enter the
+        collection not as decoration, but as fragments of
+        a larger cultural narrative.
+      </p>
+
+      <p>
+        The result is a wardrobe conceived as a journey:
+        Portuguese in language, Mozambican in inspiration,
+        and contemporary in expression.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="sound" id="sound">
+
+  <div class="sound-grid">
+
+    <div>
+      <span class="eyebrow">THE SOUND OF SAVANA</span>
+
+      <h2>
+        Hear the<br>
+        landscape.
+      </h2>
+
+      <p class="sound-copy">
+        Music gives the collection another dimension.
+        Rhythms and instruments associated with Mozambique
+        — from timbila and marimba to the energy of
+        Marrabenta — become part of SAVANA's sonic world.
+      </p>
+    </div>
+
+    <div class="player">
+
+      <div class="track">
+        <div>
+          <span class="eyebrow">ORIGINAL COMPOSITION</span>
+          <h3 class="serif">SAVANA</h3>
+          <small>JEF Sound Archive</small>
+        </div>
+
+        <div class="play">▶</div>
+      </div>
+
+      <div class="wave">
+        <i style="--h:18%"></i>
+        <i style="--h:42%"></i>
+        <i style="--h:75%"></i>
+        <i style="--h:30%"></i>
+        <i style="--h:90%"></i>
+        <i style="--h:52%"></i>
+        <i style="--h:100%"></i>
+        <i style="--h:65%"></i>
+        <i style="--h:25%"></i>
+        <i style="--h:80%"></i>
+        <i style="--h:48%"></i>
+        <i style="--h:95%"></i>
+        <i style="--h:36%"></i>
+        <i style="--h:68%"></i>
+        <i style="--h:88%"></i>
+        <i style="--h:40%"></i>
+        <i style="--h:72%"></i>
+        <i style="--h:22%"></i>
+      </div>
+
+      <p class="eyebrow">
+        MUSICIAN / COMPOSER — TO BE ADDED
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="symbols">
+
+  <div class="symbols-title">
+    <span class="eyebrow">DETAILS & SYMBOLS</span>
+    <h2>The vocabulary of SAVANA.</h2>
+  </div>
+
+  <div class="symbol-grid">
+
+    <div class="symbol">
+      <span>01</span>
+      <h3>Capulana</h3>
+      <p>
+        Pattern, colour and textile identity become
+        visual elements of the collection.
+      </p>
+    </div>
+
+    <div class="symbol">
+      <span>02</span>
+      <h3>Mussiro</h3>
+      <p>
+        A cultural reference translated through tone,
+        texture and material expression.
+      </p>
+    </div>
+
+    <div class="symbol">
+      <span>03</span>
+      <h3>Timbila</h3>
+      <p>
+        Rhythm enters the collection through the
+        musical heritage surrounding Mozambique.
+      </p>
+    </div>
+
+    <div class="symbol">
+      <span>04</span>
+      <h3>Ocean</h3>
+      <p>
+        The Indian Ocean connects geography,
+        movement and the wider Lusophone world.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="film">
+
+  <div>
+    <span class="eyebrow">BEHIND THE COLLECTION</span>
+
+    <h2>
+      The making<br>
+      of SAVANA.
+    </h2>
+
+    <div class="play">▶</div>
+
+    <p class="eyebrow">
+      CAMPAIGN FILM · BEHIND THE SCENES
+    </p>
+  </div>
+
+</section>
+
+<section class="pieces" id="pieces">
+
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">SHOP THE CHAPTER</span>
+      <h2>Selected pieces.</h2>
+    </div>
+
+    <span class="eyebrow">SAVANA / FW21—22</span>
+  </div>
+
+  <div class="products">
+
+    <div class="product">
+      <img src="https://jef.pt/cdn/shop/files/JEF_FW26_Prod_0238_533x.jpg?v=1780413302">
+      <p>SAVANA / LOOK 01<br>ARCHIVE PIECE</p>
+    </div>
+
+    <div class="product">
+      <img src="https://jef.pt/cdn/shop/files/JEF_FW26_Prod_0252_533x.jpg?v=1777733246">
+      <p>SAVANA / LOOK 02<br>ARCHIVE PIECE</p>
+    </div>
+
+    <div class="product">
+      <img src="https://jef.pt/cdn/shop/files/JEF_FW26_Prod_0254_533x.jpg?v=1777733318">
+      <p>SAVANA / LOOK 03<br>ARCHIVE PIECE</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="next">
+
+  <div>
+    <span class="eyebrow">NEXT CHAPTER — ANGOLA</span>
+
+    <h2>FALLS</h2>
+
+    <a href="index.html#collections">
+      CONTINUE THE JOURNEY →
+    </a>
+  </div>
+
+</section>
+
+<footer>
+  <strong>JEF</strong>
+  <span>MADE IN PORTUGUESE</span>
+  <span>PORTO · FUNCHAL · PORTUGAL</span>
+  <a href="index.html">BACK TO JEF</a>
+</footer>
+
+</body>
+</html>
