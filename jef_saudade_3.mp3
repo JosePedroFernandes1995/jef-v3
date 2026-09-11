@@ -1,0 +1,26 @@
+<audio id="jefAudio" preload="metadata">
+  <source src="jef_saudade_3.mp3" type="audio/mpeg">
+</audio>
+
+<button class="play" id="playBtn" aria-label="Play music">
+  ▶
+</button>
+
+<script>
+const audio = document.getElementById("jefAudio");
+const btn = document.getElementById("playBtn");
+
+btn.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.play();
+    btn.textContent = "Ⅱ";
+  } else {
+    audio.pause();
+    btn.textContent = "▶";
+  }
+});
+
+audio.addEventListener("ended", () => {
+  btn.textContent = "▶";
+});
+</script>
