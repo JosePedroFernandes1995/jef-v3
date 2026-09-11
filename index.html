@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JEF — Made in Portuguese</title>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:#f1eee7;
+  color:#111;
+  font-family:Arial,sans-serif
+}
+a{color:inherit;text-decoration:none}
+.serif{font-family:Georgia,serif}
+
+.nav{
+  position:absolute;
+  z-index:5;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:28px 4vw;
+  color:white
+}
+.logo{font:700 30px Georgia}
+.navlinks{
+  display:flex;
+  gap:28px;
+  font-size:12px;
+  letter-spacing:.12em
+}
+
+.hero{
+  height:100vh;
+  min-height:700px;
+  background:
+    linear-gradient(0deg,rgba(0,0,0,.45),rgba(0,0,0,.08)),
+    url('https://jef.pt/cdn/shop/files/JEF_FW26_0045_1500x.jpg?v=1788943795')
+    center/cover;
+  display:flex;
+  align-items:flex-end;
+  color:white;
+  padding:6vw 4vw
+}
+
+.eyebrow{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase
+}
+
+.hero h1{
+  font:normal clamp(75px,15vw,220px)/.75 Georgia;
+  margin:12px 0
+}
+
+.hero p{
+  max-width:520px;
+  font:24px/1.35 Georgia
+}
+
+.link{
+  display:inline-block;
+  border-bottom:1px solid;
+  margin-top:25px;
+  padding-bottom:5px;
+  font-size:12px;
+  letter-spacing:.15em
+}
+
+.ticker{
+  padding:17px 4vw;
+  background:#111;
+  color:#fff;
+  letter-spacing:.18em;
+  font-size:11px;
+  white-space:nowrap;
+  overflow:hidden
+}
+
+.manifesto{
+  padding:13vw 7vw;
+  text-align:center
+}
+
+.manifesto h2{
+  font:normal clamp(44px,7vw,100px)/1.05 Georgia;
+  margin:20px auto;
+  max-width:1200px
+}
+
+.manifesto p{
+  max-width:620px;
+  margin:30px auto;
+  line-height:1.7
+}
+
+.feature{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  min-height:800px;
+  background:#d9d1c3
+}
+
+.feature-img{
+  background:
+    url('https://jef.pt/cdn/shop/files/JEF_FW26_LB_0396_533x.jpg?v=1786725073')
+    center/cover
+}
+
+.feature-copy{
+  padding:8vw 6vw;
+  display:flex;
+  flex-direction:column;
+  justify-content:center
+}
+
+.feature h2{
+  font:normal clamp(70px,9vw,145px)/.8 Georgia;
+  margin:15px 0 35px
+}
+
+.feature p{font:20px/1.55 Georgia}
+
+.atlas{padding:10vw 4vw}
+
+.head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin-bottom:45px
+}
+
+.head h2{
+  font:normal clamp(50px,7vw,100px) Georgia;
+  margin:0
+}
+
+.grid4{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px
+}
+
+.card{
+  height:540px;
+  padding:25px;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+  overflow:hidden
+}
+
+.card:after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(transparent,rgba(0,0,0,.7))
+}
+
+.card>*{
+  position:relative;
+  z-index:1
+}
+
+.card h3{
+  font:40px Georgia;
+  margin:6px 0
+}
+
+.writer{
+  background:#111;
+  color:#eee;
+  padding:12vw 9vw
+}
+
+.writer blockquote{
+  font:normal clamp(42px,6vw,88px)/1.08 Georgia;
+  margin:30px 0;
+  max-width:1200px
+}
+
+.sound{
+  padding:10vw 7vw;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8vw;
+  align-items:center
+}
+
+.sound h2{
+  font:normal clamp(60px,8vw,120px)/.9 Georgia;
+  margin:15px 0
+}
+
+.wave{
+  height:180px;
+  display:flex;
+  align-items:center;
+  gap:6px
+}
+
+.wave i{
+  display:block;
+  width:3px;
+  background:#111;
+  height:var(--h)
+}
+
+.play{
+  width:80px;
+  height:80px;
+  border:1px solid;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:22px
+}
+
+.products{
+  background:#fff;
+  padding:9vw 4vw
+}
+
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px
+}
+
+.product img{
+  width:100%;
+  aspect-ratio:.72;
+  object-fit:cover
+}
+
+.product p{
+  font-size:12px;
+  line-height:1.5
+}
+
+.world{
+  min-height:85vh;
+  background:#191919;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:8vw
+}
+
+.world h2{
+  font:normal clamp(70px,12vw,180px)/.8 Georgia;
+  margin:15px
+}
+
+.footer{
+  padding:70px 4vw;
+  background:#0b0b0b;
+  color:#aaa;
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  letter-spacing:.1em
+}
+
+@media(max-width:800px){
+  .navlinks{display:none}
+  .feature,.sound{grid-template-columns:1fr}
+  .feature-img{min-height:70vh}
+  .grid4,.products-grid{grid-template-columns:1fr 1fr}
+  .card{height:400px}
+  .hero{min-height:600px}
+  .footer{gap:30px;flex-direction:column}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+  <a class="logo" href="index.html">JEF</a>
+
+  <div class="navlinks">
+    <a href="#collections">COLLECTIONS</a>
+    <a href="#story">THE WORLD OF JEF</a>
+    <a href="#shop">SHOP</a>
+    <a href="savana.html">SAVANA</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div>
+    <span class="eyebrow">GOLD — FW26/27</span>
+
+    <h1>GOLD</h1>
+
+    <p>
+      A Lusophone story, told through image,
+      word and sound.
+    </p>
+
+    <a class="link" href="#story">
+      DISCOVER THE STORY
+    </a>
+  </div>
+</header>
+
+<div class="ticker">
+  GOLD FW26/27 &nbsp; · &nbsp;
+  MADE IN PORTUGUESE &nbsp; · &nbsp;
+  FASHION &nbsp; · &nbsp;
+  LITERATURE &nbsp; · &nbsp;
+  MUSIC &nbsp; · &nbsp;
+  THE LUSOPHONE WORLD
+</div>
+
+<section class="manifesto" id="story">
+
+  <span class="eyebrow">THE JEF MANIFESTO</span>
+
+  <h2>
+    Every collection has a place.<br>
+    A voice. A sound.
+  </h2>
+
+  <p>
+    JEF speaks, feels and creates in Portuguese.
+    Fashion becomes a journey through the Lusophone
+    world — its landscapes, people, literature and music.
+  </p>
+
+</section>
+
+<section class="feature">
+
+  <div class="feature-img"></div>
+
+  <div class="feature-copy">
+
+    <span class="eyebrow">
+      CURRENT CHAPTER — BRAZIL × PORTUGAL
+    </span>
+
+    <h2>GOLD</h2>
+
+    <p class="serif">
+      Two worlds in dialogue. The organic force of the
+      Brazilian landscape meets the architectural
+      splendour of Portuguese Baroque.
+    </p>
+
+    <a class="link" href="#shop">
+      EXPLORE GOLD →
+    </a>
+
+  </div>
+</section>
+
+<section class="atlas" id="collections">
+
+  <div class="head">
+
+    <div>
+      <span class="eyebrow">THE LUSOPHONE ATLAS</span>
+
+      <h2>
+        Stories from<br>
+        our world.
+      </h2>
+    </div>
+
+    <span class="eyebrow">ARCHIVE 01—04</span>
+
+  </div>
+
+  <div class="grid4">
+
+    <a
+      href="savana.html"
+      class="card"
+      style="background-image:url('https://jef.pt/cdn/shop/files/JEF_FW26_0045_1500x.jpg?v=1788943795')"
+    >
+      <span class="eyebrow">MOZAMBIQUE</span>
+      <h3>SAVANA</h3>
+      <span>Explore chapter →</span>
+    </a>
+
+    <div
+      class="card"
+      style="background-image:url('https://jef.pt/cdn/shop/files/JEF_FW26_LB_0396_533x.jpg?v=1786725073')"
+    >
+      <span class="eyebrow">ANGOLA</span>
+      <h3>FALLS</h3>
+      <span>FW24/25</span>
+    </div>
+
+    <div
+      class="card"
+      style="background-image:url('https://jef.pt/cdn/shop/files/JEF_FW26_Prod_0252_533x.jpg?v=1777733246')"
+    >
+      <span class="eyebrow">TIMOR-LESTE</span>
+      <h3>TIMUR</h3>
+      <span>SS25</span>
+    </div>
+
+    <div
+      class="card"
+      style="background-image:url('https://jef.pt/cdn/shop/files/JEF_FW26_Prod_0254_533x.jpg?v=1777733318')"
+    >
+      <span class="eyebrow">BRAZIL × PORTUGAL</span>
+      <h3>GOLD</h3>
+      <span>FW26/27</span>
+    </div>
+
+  </div>
+</section>
+
+<section class="writer">
+
+  <span class="eyebrow">THE WRITTEN WORD</span>
+
+  <blockquote>
+    “Clothing can carry more than form.
+    It can carry memory, geography and language.”
+  </blockquote>
+
+  <p>
+    Each JEF collection is accompanied by a literary
+    voice — a second way of entering the place that
+    inspired it.
+  </p>
+
+</section>
+
+<section class="sound" id="sound">
+
+  <div>
+
+    <span class="eyebrow">THE SOUND OF JEF</span>
+
+    <h2>
+      Listen to<br>
+      the collection.
+    </h2>
+
+    <p>
+      Every chapter has an original musical identity.
+      A composition created to translate the same
+      landscape into sound.
+    </p>
+
+    <a href="savana.html#sound" class="link">
+      ENTER THE SOUND ARCHIVE →
+    </a>
+
+  </div>
+
+  <div>
+
+    <div class="wave">
+      <i style="--h:20%"></i>
+      <i style="--h:55%"></i>
+      <i style="--h:85%"></i>
+      <i style="--h:40%"></i>
+      <i style="--h:95%"></i>
+      <i style="--h:60%"></i>
+      <i style="--h:30%"></i>
+      <i style="--h:75%"></i>
+      <i style="--h:100%"></i>
+      <i style="--h:45%"></i>
+      <i style="--h:80%"></i>
+      <i style="--h:35%"></i>
+      <i style="--h:70%"></i>
+      <i style="--h:50%"></i>
+      <i style="--h:90%"></i>
+      <i style="--h:25%"></i>
+    </div>
+
+    <div class="play">▶</div>
+
+    <p class="eyebrow">
+      JEF — ORIGINAL COMPOSITIONS / SOUND ARCHIVE
+    </p>
+
+  </div>
+
+</section>
+
+<section class="products" id="shop">
+
+  <div class="head">
+
+    <div>
+      <span class="eyebrow">SELECTED PIECES</span>
+      <h2>GOLD / Edit</h2>
+    </div>
+
+    <span class="eyebrow">SHOP COLLECTION →</span>
+
+  </div>
+
+  <div class="products-grid">
+
+    <div class="product">
+      <img src="https://jef.pt/cdn/shop/files/JEF_FW26_Prod_0238_533x.jpg?v=1780413302">
+      <p>OMERO<br><span>Outerwear / GOLD</span></p>
+    </div>
+
+    <div class="product">
+      <img src="https://jef.pt/cdn/shop/files/JEF_FW26_Prod_0252_533x.jpg?v=1777733246">
+      <p>OSEI<br><span>Kimono / GOLD</span></p>
+    </div>
+
+    <div class="product">
+      <img src="https://jef.pt/cdn/shop/files/JEF_FW26_Prod_0254_533x.jpg?v=1777733318">
+      <p>OMER<br><span>Bomber / GOLD</span></p>
+    </div>
+
+    <div class="product">
+      <img src="https://jef.pt/cdn/shop/files/JEF_FW26_LB_0396_533x.jpg?v=1786725073">
+      <p>THE GOLD LOOK<br><span>Editorial / FW26/27</span></p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="world">
+
+  <div>
+
+    <span class="eyebrow">THE WORLD OF JEF</span>
+
+    <h2>
+      Made in<br>
+      Portuguese.
+    </h2>
+
+    <p>
+      Fashion · Literature · Music · Culture
+    </p>
+
+  </div>
+
+</section>
+
+<footer class="footer">
+  <strong>JEF</strong>
+  <span>PORTO · FUNCHAL · PORTUGAL</span>
+  <span>INSTAGRAM &nbsp; NEWSLETTER &nbsp; CONTACT</span>
+  <span>© JEF</span>
+</footer>
+
+</body>
+</html>
